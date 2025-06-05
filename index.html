@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play XBubbling online - An addictive bubble popping game with stunning visuals and challenging levels. Free to play in your browser!">
+    <meta name="keywords" content="XBubbling, bubble game, online game, free games, browser game, puzzle game">
+    <meta name="author" content="XBubbling Games">
+    <meta property="og:title" content="XBubbling - Play Free Online Bubble Game">
+    <meta property="og:description" content="Experience the ultimate bubble popping adventure with XBubbling. Challenge yourself with colorful bubbles and exciting gameplay!">
+    <meta property="og:url" content="https://xbubbling.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xbubbling.xyz/og-image.jpg">
+    <link rel="canonical" href="https://xbubbling.xyz">
+    <title>XBubbling - Play Free Online Bubble Game | xbubbling.xyz</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #86868b;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .game-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .game-iframe-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .game-iframe-container::before {
+            content: '';
+            display: block;
+            padding-top: 75%; /* 4:3 Aspect Ratio */
+        }
+
+        .game-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+
+        .description-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .description-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .description-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #515154;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #86868b;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
+            text-align: center;
+            color: #86868b;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .game-section, .description-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .description-content p {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 15px 0;
+            }
+
+            .game-iframe-container::before {
+                padding-top: 85%; /* Slightly taller on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>XBubbling</h1>
+                <p class="tagline">Pop your way to victory in this addictive bubble adventure</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="game-section">
+                <h2>Play XBubbling Now</h2>
+                <div class="game-iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        src="https://cloud.onlinegames.io/games/2025/unity/xbubbling/index-og.htm"
+                        title="XBubbling Online Game"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <a href="#game-description" class="cta-button">Learn More About XBubbling</a>
+            </section>
+
+            <section class="description-section" id="game-description">
+                <div class="description-content">
+                    <h2>About XBubbling Game</h2>
+                    <p>
+                        XBubbling is an engaging and colorful bubble-popping game that challenges players to clear the screen by matching bubbles of the same color. With its intuitive gameplay mechanics and stunning visual effects, XBubbling offers hours of entertainment for players of all ages.
+                    </p>
+                    <p>
+                        The game features multiple challenging levels, each with unique layouts and obstacles that test your strategic thinking and precision. As you progress through the game, you'll encounter special power-ups and bonus bubbles that add exciting twists to the classic bubble-shooting formula.
+                    </p>
+                    <p>
+                        Built with modern web technologies, XBubbling runs smoothly in any browser without requiring downloads or installations. The game is optimized for both desktop and mobile devices, ensuring a seamless gaming experience across all platforms.
+                    </p>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="container">
+                    <h2>Game Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">🎯</span>
+                            <h3>Precision Gameplay</h3>
+                            <p>Master the art of bubble shooting with precise aiming and strategic planning</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🌈</span>
+                            <h3>Colorful Graphics</h3>
+                            <p>Enjoy vibrant visuals and smooth animations that bring the game to life</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📱</span>
+                            <h3>Cross-Platform</h3>
+                            <p>Play seamlessly on desktop, tablet, or mobile devices anywhere, anytime</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="description-section">
+                <div class="description-content">
+                    <h2>How to Play XBubbling</h2>
+                    <p>
+                        Getting started with XBubbling is simple and fun. Use your mouse or finger to aim the bubble shooter at the top of the screen. Match three or more bubbles of the same color to make them pop and clear them from the board. The goal is to clear all bubbles before they reach the bottom of the screen.
+                    </p>
+                    <p>
+                        Strategic thinking is key to achieving high scores in XBubbling. Plan your shots carefully to create chain reactions and maximize your points. Look for opportunities to use the walls to bounce bubbles into hard-to-reach spots, and always keep an eye on your remaining bubbles.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 XBubbling.xyz - All rights reserved. Play responsibly and have fun!</p>
+        </div>
+    </footer>
+</body>
+</html>
